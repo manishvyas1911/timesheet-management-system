@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Timesheet Management System</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  
+    <!-- fullCalendar 2.2.5-->
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="home.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>MS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>T M </b>System</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+         
+          <!-- Tasks Menu -->
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><%=first_name +" "+last_name %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+              </li>
+              <!-- Menu Body -->
+            
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="LogOut" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+      
+        <li><a href="profile.html"><i class="fa fa-link"></i> <span>View Profile</span></a></li>
+        
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Timesheet</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addtimesheet.html">Add Timesheet</a></li>
+            <li><a href="viewtimesheet.html">View Timesheet</a></li>
+          </ul>
+        </li>
+        
+         <li><a href="employeesheet.html"><i class="fa fa-link"></i> <span>Review Employee Sheets</span></a></li>
+        
+        
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+  
+
+    <!-- Main content -->
+   
+    <section class="content-header">
+     	<div class="box box-solid">
+      <h1>
+        Attendance Info
+      </h1>
+    <div class="row">
+		   <div class="col-md-8">  
+			      <div class="box-body no-padding">
+			    <!-- THE CALENDAR -->
+			    <div id="calendar" class="fc fc-ltr fc-unthemed">
+				
+			    </div>
+			     </div>
+		     </div>
+		     <div class="col-md-3" >
+					<div class="nav-tabs-custom" >
+					 <ul class="nav nav-tabs">
+					   <li class="active" ><a href="#feed" data-toggle="tab"><i class="fa fa-fw fa-feed"></i>Feed</a></li>
+					   <li><a href="#attendance" data-toggle="tab"><i class="fa fa-fw fa-black-tie"></i>Attendance</a></li>
+					   </ul>
+					     <div class="tab-content">
+					          <div class="active tab-pane" id="feed">
+					              <div class="active tab-pane" id="feed">
+					             	<div class="box box-solid">
+					             	Feeds
+					        
+							<div class="box-footer no-padding">
+										 <table id="example1"  class="table table-bordered table-striped">
+							                <thead>
+							                <tr>
+							                      
+											 	  <th>First In Time</th>
+											 	  <th>Last Out Time</th>
+											 	  <th>Work Hours</th>
+											 	  <th>Late In</th>
+											 	 
+											</tr>
+							                </thead>
+							                <tbody>
+							                </tbody>
+			              
+			             			     </table>
+							</div>
+					             	
+									</div>	
+									</div>
+					               </div>
+					              <!-- /.tab-pane -->
+					                 
+					              <div class="tab-pane" id="attendance">
+					                <div class="active tab-pane" id="attendance">
+					             	<div class="box box-solid">
+									 attendance
+									
+							<div class="box-footer no-padding">
+								 <table id="example1"  class="table table-bordered table-striped">
+					                <thead>
+					                <tr>
+					                      
+									 	  <th>Sl.No</th>
+									 	  <th>Swipe Time</th>
+									 	  <th>In/Out</th>
+									</tr>
+					                </thead>
+					                     <tbody>
+					                    </tbody>
+	              			    </table>
+							</div>
+									 
+									</div>	
+					               </div>
+					              </div>
+                         </div>
+					   </div>
+					   
+					   
+		     </div>
+       </div>
+     </div> 
+     
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+         
+    </section>
+    <!-- /.content -->
+   
+   
+   
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+   
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2017 <a href="#">Advantal</a>.</strong> All rights reserved.
+  </footer>
+
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3.1.1 -->
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- fullCalendar 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="plugins/fullcalendar/fullcalendar.min.js"></script>
+<script>
+  $(function () {
+	  var date = new Date();
+	    var d = date.getDate(),
+	        m = date.getMonth(),
+	        y = date.getFullYear();
+	    $('#calendar').fullCalendar({
+	        dayClick: function(date, jsEvent, view) {
+
+	            alert('Clicked on: ' + date.format());
+
+	           // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+	           // alert('Current view: ' + view.name);
+
+	            // change the day's background color just for fun
+	           // $(this).css('background-color', 'red');
+
+	        }
+	    });
+});
+	</script>
+ 
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

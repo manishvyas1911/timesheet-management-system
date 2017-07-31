@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Timesheet Management System</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+   <!-- daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css">
+ 
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+     <!-- Logo -->
+    <a href="home.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>MS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>T M </b>System</span>
+    </a>
+
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+         
+          <!-- Tasks Menu -->
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><%=first_name +" "+last_name %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+              </li>
+              <!-- Menu Body -->
+            
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="LogOut" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+ 
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+      
+        <li><a href="profile.html"><i class="fa fa-link"></i> <span>View Profile</span></a></li>
+        
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Timesheet</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addtimesheet.html">Add Timesheet</a></li>
+            <li><a href="viewtimesheet.html">View Timesheet</a></li>
+          </ul>
+        </li>
+        
+         <li><a href="employeesheet.html"><i class="fa fa-link"></i> <span>Review Employee Sheets</span></a></li>
+        
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Timesheet
+      </h1>
+    
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+    <div class="box-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+				  <label>Select Employee</label> <select id="userSelect" class="form-control select2"
+											style="width: 100%;">
+							<option selected="selected">none</option>
+						</select>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+     <div class="row">
+        <div class="col-xs-12">
+         
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="form-group">
+                <label>Select Interval</label>
+             <div class="input-group">
+                  <button type="button" class="btn btn-default pull-left" id="daterange-btn">
+                    <span>
+                      <i class="fa fa-calendar"></i> Date range picker
+                    </span>
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                </div>
+                 
+                </div>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+			 -->	
+              <table id="example1"  class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                      
+				 	  <th>Date</th>
+				 	  <th>10-11 Am</th>
+				 	  <th>11-12 Am</th>
+				 	  <th>12-1 Pm</th>
+				 	  <th>1-2 Pm</th>
+				 	  <th>2-3 Pm</th> 
+				 	  <th>3-4 Pm</th>
+				 	  <th>4-5 Pm</th>
+				 	  <th>5-6 Pm</th>
+				 	  <th>6-7 Pm</th>
+				 	  <th>Extra</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--  <tr ng-repeat="x in timesheet" ng-class-even="'striped'">   
+				  <td>{{ x.date}}</td>  
+				  <td>{{ x.t10_11am }}</td>
+				  <td>{{ x.t11_12am }}</td> 
+				  <td>{{ x.t12_1pm }}</td> 
+				  <td>{{ x.t1_2pm }}</td> 
+				  <td>{{ x.t2_3pm }}</td> 
+				  <td>{{ x.t3_4pm }}</td> 
+				  <td>{{ x.t4_5pm }}</td> 
+				  <td>{{ x.t5_6pm }}</td> 
+				  <td>{{ x.t6_7pm }}</td> 
+				  <td>{{x.extra}}</td> 
+				
+				  </tr> -->
+
+              </tbody>
+                </tfoot>
+              </table>
+           <!--    </div> -->
+              
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+   <footer class="main-footer">
+   <strong>Copyright &copy; 2017 <a href="#">Advantal</a>.</strong> All rights reserved.
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3.1.1 -->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../scripts/angular.min.js"></script>  
+
+<!-- page script -->
+<script>
+
+
+var startDate;
+var endDate;
+
+  $(function () {
+	  
+	  $.ajax({
+		    type: 'GET',
+		    url: 'EmployeesDetails',
+		    mimeType: 'json',
+		    success: function(data) {
+		    	
+		       $.each(data.users, function(i, x) {
+		        	console.log(x.email);
+		        var body = "<option value='"+x.email+"'>" + x.first_name +" "+x.last_name+ "</option>";
+	            $( "#userSelect" ).append(body); 
+		        });
+		    },
+		    error: function() {
+		        alert('Fail!');
+		    }
+		}); 
+	  
+	
+	    $.ajax({
+		    type: 'GET',
+		    url: 'ViewTimesheet',
+		    mimeType: 'json',
+		    success: function(data) {
+		        $.each(data.timeSheetData, function(i, x) {
+		        	  var body = "<tr>";
+	  		            body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.date + "</label></td>"; 
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" + x.t10_11am + "</label></td>";
+	  		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.t11_12am + "</label></td>";
+	  		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.t12_1pm + "</label></td>"; 
+	  		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" +x.t1_2pm + "</label></td>";
+	  		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" +x.t2_3pm + "</label></td>"; 
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t3_4pm + "</label></td>";
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t4_5pm + "</label></td>"; 
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t5_6pm + "</label></td>";
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t6_7pm + "</label></td>";
+	  		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.extra + "</label></td>";
+	  		            body    += "</tr>";
+		            $( "#example1 tbody" ).append(body);
+		        });
+		   
+		        $( "#example1" ).DataTable( {
+	  		          "scrollX": true
+	  		      });
+		        
+		    },
+		    error: function() {
+		        alert('Fail!');
+		    }
+		});  
+	 
+    
+  //Date range as a button
+    $('#daterange-btn').daterangepicker(
+    		
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment(),
+          locale: {
+                  format: 'DD/MM/YYYY'
+              }
+         },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+          startDate = start;
+          endDate = end;  
+         // alert(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+         // alert($('#userSelect :selected').text());
+          var datesJson = {}; 
+          datesJson['startDate']=start.format('DD/MM/YYYY');
+          datesJson['endDate']=end.format('DD/MM/YYYY');
+          datesJson['empEmail']=$('#userSelect :selected').val();
+          
+          $.ajax({
+				type: 'POST',
+				data: JSON.stringify(datesJson),
+		        contentType: 'application/json',
+                url: 'FilterTimesheetEmp',						
+              success: function(data) {
+                  console.log('success');
+                  var table = $("#example1").DataTable();
+                  table.clear().draw();
+                
+                  $.each(data.timeSheetData, function(i, x) {
+                	  var body = "<tr>";
+    		            body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.date + "</label></td>"; 
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" + x.t10_11am + "</label></td>";
+    		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.t11_12am + "</label></td>";
+    		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" + x.t12_1pm + "</label></td>"; 
+    		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" +x.t1_2pm + "</label></td>";
+    		             body    += "<td><label style='width: 200px;word-wrap: break-word;'>" +x.t2_3pm + "</label></td>"; 
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t3_4pm + "</label></td>";
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t4_5pm + "</label></td>"; 
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t5_6pm + "</label></td>";
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.t6_7pm + "</label></td>";
+    		             body    += " <td><label style='width: 200px;word-wrap: break-word;'>" +x.extra + "</label></td>";
+    		            body    += "</tr>";
+  		          
+  		            $( "#example1 tbody").append(body);
+  		        });
+                  
+              },
+              error: function(xhr, textStatus, errorThrown){
+              	 console.log('error');
+               }
+          });
+          
+        }
+    );
+ 
+ 
+    //$("#example1").DataTable();
+   /*  $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    }); */
+  });
+  
+  
+/*   var app=angular.module("myApp",[]);
+  app.controller("myCtrl",function($scope,$http) {  
+      var url = "ViewTimesheet"; 
+       $http.get(url).success( function(response) {  
+         $scope.timesheet = response.timeSheetData; 
+      });  
+   });   */
+</script>
+</body>
+</html>

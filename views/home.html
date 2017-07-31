@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Timesheet Management System</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="home.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>MS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>T M </b>System</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+         
+          <!-- Tasks Menu -->
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><%=first_name +" "+last_name %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+              </li>
+              <!-- Menu Body -->
+            
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="LogOut" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+      
+        <li><a href="profile.html"><i class="fa fa-link"></i> <span>View Profile</span></a></li>
+        
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Timesheet</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addtimesheet.html">Add Timesheet</a></li>
+            <li><a href="viewtimesheet.html">View Timesheet</a></li>
+          </ul>
+        </li>
+        
+         <li><a href="employeesheet.html"><i class="fa fa-link"></i> <span>Review Employee Sheets</span></a></li>
+        
+        
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+  
+
+    <!-- Main content -->
+   
+    <section class="content-header">
+      <h1>
+        Add Work
+        <h3><span id="save_msg"></span></h3>
+      </h1>
+     
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+         
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active" ><a href="#attendance" data-toggle="tab"><i class="fa fa-fw fa-black-tie"></i>Attendance</a></li>
+              <li><a href="#feed" data-toggle="tab"><i class="fa fa-fw fa-feed"></i>Feed</a></li>
+              <li><a href="#salary" data-toggle="tab"><i class="fa fa-fw fa-inr"></i>Salary</a></li>
+              <li><a href="#leave" data-toggle="tab"><i class="fa fa-fw fa-plane"></i>Leave</a></li>
+            <li><a href="#directory" data-toggle="tab"><i class="fa fa-fw fa-users"></i>Directory</a></li>
+            </ul>
+            <div class="tab-content">
+             <div class="active tab-pane" id="attendance">
+             
+			    <div class="box box-solid">
+				  <div class="row">
+				 
+                    <div class="col-md-4">
+							<div class="widget-user-header bg-aqua-active">
+							   <h3 class="widget-user-username text-center">Mark Attendance</h3>
+							   <br>
+							</div>
+							<div class="box-footer no-padding">
+						      <br>
+							
+							<h3 class="text-center"><span class="currentDate"></span></h3>
+							<h3 class="text-center"><span class="currentDay"></span></h3>
+							<h3 class="text-center"><span class="currentTime"></span></h3>
+						
+							
+							  	<br>
+							<div class="text-center">
+									<button class="btn btn-large btn-success signIn ">Sign In</button>
+									<button class="btn btn-large btn-success signOut hide">Sign Out</button>
+							</div>
+		
+							</div>
+					
+					 </div>
+					   <div class="col-md-4">
+							<div class="widget-user-header bg-aqua-active">
+							   <h3 class="widget-user-username text-center">Recent Swipes</h3>
+							   <br>
+							</div>
+							<div class="box-footer no-padding">
+							 <table id="example1"  class="table table-bordered table-striped">
+				                <thead>
+				                <tr>
+				                      
+								 	  <th>Status</th>
+								 	  <th>Date</th>
+								 	  <th>Time</th>
+								</tr>
+				                </thead>
+				                <tbody>
+				                   
+				
+				              </tbody>
+              
+             			 </table>
+							</div>
+					
+					 </div>
+					   <div class="col-md-4">
+					<div class="widget-user-header bg-aqua-active">
+					   <h3 class="widget-user-username text-center">Monthly Summary</h3>
+						<br>
+					</div>
+					 <div class="box-footer text-center ">
+			              <h5>June 2017</h5>
+			         </div>
+					<div class="box-footer no-padding">
+					         <ul class="nav nav-stacked">
+					           <li><h5>Present Days<span class="pull-right badge bg-blue">0</span></h5></li>
+					           <li><h5>Absent<span class="pull-right badge bg-aqua">0</span></h5></li>
+					           <li><h5>On Leave<span class="pull-right badge bg-green">0</span></h5></li>
+					           <li><h5>Holidays<span class="pull-right badge bg-red">0</span></h5></li>
+					           <li><h5>LateIn Days<span class="pull-right badge bg-red">0</span></h5></li>
+					           <li><h5>EarlyOut Days<span class="pull-right badge bg-red">0</span></h5></li>
+					         
+					         </ul>
+					       <div class="box-footer text-center">
+			              <a href="showDetailedAttendance.html" class="uppercase"><h5>View More»</h5></a>
+			             </div>
+					 </div>
+					 </div>
+					 </div>
+				  </div>
+            </div>
+               
+                  
+              <div class="tab-pane" id="feed">
+              <div class="active tab-pane" id="feed">
+             	<div class="box box-solid">
+             	Feeds
+				</div>	
+				</div>
+               </div>
+              <!-- /.tab-pane -->
+                 
+              <div class="tab-pane" id="directory">
+                <div class="active tab-pane" id="directory">
+             	<div class="box box-solid">
+				 directory
+				</div>	
+               </div>
+              </div>
+              <!-- /.tab-pane -->
+       
+                     
+              <div class="tab-pane" id="salary">
+              <div class="active tab-pane" id="salary">
+             	<div class="box box-solid">
+             	Salary
+				</div>	
+				</div>
+               </div>
+              <!-- /.tab-pane -->
+
+              <div class="tab-pane" id="leave">
+                <div class="active tab-pane" id="leave">
+             	<div class="box box-solid">
+				 leave
+				</div>	
+               </div>
+              </div>
+              
+             
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+       
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+   
+   
+   
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+   
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2017 <a href="#">Advantal</a>.</strong> All rights reserved.
+  </footer>
+
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3.1.1 -->
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<script>
+var signArr = {}; 
+
+if (!Date.now) {
+	  Date.now = function now() {
+	    return new Date().getTime();
+	  };
+	}
+
+$('.btn.btn-large.btn-success.signIn').click(function() {
+   
+    $(this).addClass('hide');
+    $('.btn.btn-large.btn-success.signOut').removeClass('hide');
+   
+    
+    signArr['current']=Date.now();//new Date().getTime() ;
+	$.ajax({
+		type: 'POST',
+		data: JSON.stringify(signArr),
+        contentType: 'application/json',
+        url: 'AddSwipeIn',						
+        success: function(data) {
+            console.log('success');
+             $("#save_msg").text("Successfully Signed In");
+             $("#save_msg").css("color","green"); 
+            console.log(data);
+             var body = "<tr>";
+            body    += "<td class='center'><label>"+data.sign_status+"</label></td>"; 
+            body    += "<td class='center'><label>"+data.sign_date+"</label></td>"; 
+            body    += "<td class='center'><label>"+data.sign_time+"</label></td>"; 
+            body    += "</tr>";
+            $( "#example1 tbody" ).prepend(body);
+   
+        },
+        error: function(xhr, textStatus, errorThrown){
+        	$("#save_msg").text("Error Signing In");
+            $("#save_msg").css("color","red");
+         }
+    });
+console.log(JSON.stringify(signArr));
+});
+	
+
+
+$('.btn.btn-large.btn-success.signOut').click(function() {
+	   
+    $(this).addClass('hide');
+    $('.btn.btn-large.btn-success.signIn').removeClass('hide');
+	
+    
+    signArr['current']=Date.now();//new Date().getTime();  
+    
+	$.ajax({
+		type: 'POST',
+		data: JSON.stringify(signArr),
+        contentType: 'application/json',
+        url: 'AddSwipeOut',						
+        success: function(data) {
+            console.log(data);
+            $("#save_msg").text("Successfully Signed Out");
+               $("#save_msg").css("color","green"); 
+                var body = "<tr>";
+	            body    += "<td class='center'><label>"+data.sign_status+"</label></td>"; 
+	            body    += "<td class='center'><label>"+data.sign_date+"</label></td>"; 
+	            body    += "<td class='center'><label>"+data.sign_time+"</label></td>"; 
+	            body    += "</tr>";
+	            $( "#example1 tbody" ).prepend(body);
+            
+            
+        },
+        error: function(xhr, textStatus, errorThrown){
+        	$("#save_msg").text("Error Signing Out");
+            $("#save_msg").css("color","red");
+         }
+    });
+console.log(JSON.stringify(signArr));
+}); 
+
+
+Number.prototype.pad = function (len) {
+    return (new Array(len+1).join("0") + this).slice(-len);
+}
+
+setInterval(function(){ 
+	var today = new Date();
+	var time = today.getHours().pad(2) + ":" + today.getMinutes().pad(2) + ":" + today.getSeconds().pad(2);
+	$('.currentTime').text(time);
+	
+	var weekday = new Array(7);
+	weekday[0] =  "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";
+
+	var n = weekday[today.getDay()];
+	
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	    dd='0'+dd;
+	} 
+	if(mm<10){
+	    mm='0'+mm;
+	} 
+	var today = dd+'/'+mm+'/'+yyyy;
+	
+	$('.currentDate').text(today);
+	$('.currentDay').text(n);
+
+},100);
+
+$(function () {
+	
+	
+	$.ajax({
+	    type: 'GET',
+	    url: 'GetSignStatus',
+	    mimeType: 'json',
+	    success: function(data) {
+	    if(data.signStatus.length === 0 || data.signStatus === []){
+	    	
+	    }	
+	    else{
+		    var signStatus=data.signStatus[0].sign_status;
+		    if(signStatus === "In"){
+		    	 $('.btn.btn-large.btn-success.signIn').addClass('hide');
+		    	$('.btn.btn-large.btn-success.signOut').removeClass('hide');
+		    	
+		    }
+		    if(signStatus === "Out"){
+		    	 $('.btn.btn-large.btn-success.signOut').addClass('hide');
+		    	 $('.btn.btn-large.btn-success.signIn').removeClass('hide');
+		    		
+		    } 
+	    }
+	    },
+	    error: function() {
+	        alert('Fail!');
+	    }
+	  }); 
+
+	
+	 
+	   $.ajax({
+		    type: 'GET',
+		    url: 'ViewSinSout',
+		    mimeType: 'json',
+		    success: function(data) {
+		   
+		        $.each(data.signData, function(i, x) {
+		   			
+		        	var body = "<tr>";
+		            body    += "<td class='center'><label>"+x.sign_status+"</label></td>"; 
+		            body    += "<td class='center'><label>"+x.sign_date+"</label></td>"; 
+		            body    += "<td class='center'><label>"+x.sign_time+"</label></td>"; 
+		            body    += "</tr>";
+		            $( "#example1 tbody" ).append(body);
+		        });
+		        
+		    },
+		    error: function() {
+		        
+		         var body = "<tr>";
+		            body    += "<td class='center'><label>Status</label></td>"; 
+		            body    += "<td class='center'><label>Date</label></td>"; 
+		            body    += "<td class='center'><label>Time</label></td>"; 
+		            body    += "</tr>";
+		           
+		            $( "#example1 tbody" ).append(body);
+		       
+		    }
+		});  
+	   
+});
+
+
+</script>
+
+
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

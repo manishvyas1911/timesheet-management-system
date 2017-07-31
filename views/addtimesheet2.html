@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Timesheet Management System</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+ <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="home.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>MS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>T M </b>System</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+         
+          <!-- Tasks Menu -->
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><%=first_name +" "+last_name %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+              </li>
+              <!-- Menu Body -->
+            
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="LogOut" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+      
+        <li><a href="profile.html"><i class="fa fa-link"></i> <span>View Profile</span></a></li>
+        
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Timesheet</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addtimesheet.html">Add Timesheet</a></li>
+            <li><a href="viewtimesheet.html">View Timesheet</a></li>
+          </ul>
+        </li>
+        
+         <li><a href="employeesheet.html"><i class="fa fa-link"></i> <span>Review Employee Sheets</span></a></li>
+        
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+                 
+							
+            
+        <section class="content">
+				<div class="box box-solid">
+				 <span id="save_msg" style="font-size: 20px;margin-left: 1%;"></span>
+					 
+					<div class="box-header with-border">
+					 <h4 class="box-title">Select Time (please select time before filling)</h4>
+					</div>
+					
+					 
+					  
+					<table class="table">
+						<tbody>
+							<tr>
+								<th><label> <input type="radio" name="time"
+										id="am1011" value="am1011" checked="" /> 10 AM -11 AM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="am1112" value="am1112" /> 11 AM - 12 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm1201" value="pm1201" /> 12 PM - 1 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0102" value="pm0102" /> 1 PM - 2 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0203" value="pm0203" /> 2 PM - 3 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0304" value="pm0304" /> 3 PM - 4 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0405" value="pm0405" /> 4 PM - 5 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0506" value="pm0506" /> 5 PM - 6 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="pm0607" value="pm0607" /> 6 PM - 7 PM
+								</label></th>
+								<th><label> <input type="radio" name="time"
+										id="extra" value="extra" /> EXTRA
+								</label></th>
+						</tbody>
+					</table>
+				</div>
+				<div class="row">
+        <div class="col-md-3">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+              <h4 class="box-title">Add Work</h4>
+            </div>
+            <div class="box-body">
+              <!-- the events -->
+              <div id="external-events">
+                <div class="external-event bg-yellow ui-draggable ui-draggable-handle" style="position: relative;">Work on Functional part</div>
+				<div class="external-event bg-aqua ui-draggable ui-draggable-handle" style="position: relative;">Work on UI part</div>
+                <div class="external-event bg-green ui-draggable ui-draggable-handle" style="position: relative;">Lunch</div>
+                <div class="external-event bg-blue ui-draggable ui-draggable-handle" style="position: relative;">In Meeting/events</div>
+                <div class="external-event bg-red ui-draggable ui-draggable-handle" style="position: relative;">On Leave</div>
+                <div class="checkbox">
+                  <label for="drop-remove">
+                    <input type="checkbox" id="drop-remove">
+                    remove after drop
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+          <!-- /. box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Create Work</h3>
+            </div>
+            <div class="box-body">
+              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                <ul class="fc-color-picker" id="color-chooser">
+                  <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                  <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                </ul>
+              </div>
+              <!-- /btn-group -->
+              <div class="input-group">
+                <input id="new-event" type="text" class="form-control" placeholder="Work Description">
+            
+                <div class="input-group-btn">
+                  <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                </div>
+                
+                
+                <!-- /btn-group -->
+              </div>
+              
+          <!-- /input-group -->
+            </div>
+            
+           </div>
+           
+           <div class="box box-solid">
+            <div id="calendarTrash"  class="calendar-trash box-header with-border">
+              <h3 class="box-title">Remove</h3>
+            </div>
+            </div>
+           
+           
+           
+           <!-- [6-6-2017] -->
+            <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Save Timesheet</h3>
+            </div>
+             <div class="box-body">
+              <div class="input-group">
+               <!--  <input id="total-events" type="text" class="form-control" placeholder="Event List">
+             -->
+              <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+             <div class="input-group-btn">
+                  <button id="save-timesheet-event" type="button" class="btn btn-primary btn-flat">Save</button>
+                </div>
+                </div>
+                </div>
+                </div>
+               </div>    
+             
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+  <div class="box-body no-padding">
+    <!-- THE CALENDAR -->
+<div id="calendar" class="fc fc-ltr fc-unthemed">
+	
+</div>
+</div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+   
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2017 <a href="#">Advantal</a>.</strong> All rights reserved.
+  </footer>
+
+ 
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3.1.1 -->
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
+
+<!-- Page specific script -->
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Slimscroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- fullCalendar 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="plugins/fullcalendar/fullcalendar.min.js"></script>
+<!-- Page specific script -->
+<script>
+
+	
+  $(function () {
+	  
+
+	  var eventList = [];
+	  
+	  function findAndRemove(array, property,value,property2,value2) {
+		  array.forEach(function(result, index) {
+		    if(result[property] === value && result[property2]=== value2) {
+		      //Remove from array
+		      array.splice(index, 1);
+		    }    
+		  });
+		}
+	
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function ini_events(ele) {
+      ele.each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        };
+
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject);
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex: 1070,
+          revert: true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        });
+
+      });
+    }
+
+    ini_events($('#external-events div.external-event'));
+    
+  
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date();
+    var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear();
+    
+    
+    $('#calendar').fullCalendar({
+    	 header: {
+          left: 'prev,next today',
+          center: 'title',
+          right:'' /*'month',agendaWeek,agendaDay' */
+        },
+        buttonText: {
+          today: 'today',
+          /* month: 'month',
+           week: 'week',
+          day: 'day' */
+        },
+        //Random default events
+        events: [
+                /*  {
+                            title: 'hello',
+                            start: new Date("2017-06-25"),
+                            backgroundColor: "#3c8dbc", //Primary (light-blue)
+                            borderColor: "#3c8dbc" //Primary (light-blue)
+                         
+                }  */
+        ],
+        editable: true,
+        
+      /*   eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
+     
+            alert(
+                event.title + " was moved " +
+                dayDelta + " days and " +
+                minuteDelta + " minutes."
+            );
+            if (allDay) {
+                alert("Event is now all-day");
+            }else{
+                alert("Event has a time-of-day");
+            }
+
+            if (!confirm("Are you sure about this change?")) {
+              //  revertFunc();
+            
+            }
+            
+            for (var i=0; i<eventList.length; i++) {
+            	  if (eventList[i].Id == 3) {
+            		  eventList[i].Username = "Thomas";
+            	    break;
+            	  }
+            	}
+        
+        }, */ 
+        droppable: true, // this allows things to be dropped onto the calendar !!!
+        /* eventClick: function(event, jsEvent, view) {
+
+            alert('Event: ' + event.title);
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert('View: ' + view.name);
+
+            // change the border color just for fun
+            $(this).css('border-color', 'red');
+
+        }, */
+        /* dayClick: function (date, jsEvent, view) {
+            $(".fc-state-highlight").removeClass("fc-state-highlight");
+            $(jsEvent.target).addClass("fc-state-highlight");
+         }, */
+        eventDragStop: function(event,jsEvent) {
+          
+            var trashEl = jQuery('#calendarTrash');
+            var ofs = trashEl.offset();
+
+            var x1 = ofs.left;
+            var x2 = ofs.left + trashEl.outerWidth(true);
+            var y1 = ofs.top;
+            var y2 = ofs.top + trashEl.outerHeight(true);
+
+            if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
+                jsEvent.pageY >= y1 && jsEvent.pageY <= y2) {
+                $('#calendar').fullCalendar('removeEvents',event._id);
+                console.log(event._id);
+               var date=event.start._d
+               
+               var dd = date.getDate();
+               var mm = date.getMonth()+1; //January is 0!
+
+               var yyyy = date.getFullYear();
+               if(dd<10){
+                   dd='0'+dd;
+               } 
+               if(mm<10){
+                   mm='0'+mm;
+               } 
+               var mydate = dd+'/'+mm+'/'+yyyy;
+               console.log(mydate);
+                findAndRemove(eventList, 'title',event.title,'date',mydate);
+           
+                
+            }
+        },
+        drop: function (date, allDay) { // this function is called when something is dropped
+
+          // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject');
+        
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject);
+
+        // assign it the date that was reported
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        copiedEventObject.backgroundColor = $(this).css("background-color");
+        copiedEventObject.borderColor = $(this).css("border-color");
+
+       
+      
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+        
+        if ($('#am1011').is(':checked')) {
+        	
+        	timePeriod = $("#am1011").val() ; 
+          }
+        if ($('#am1112').is(':checked')) {
+        	timePeriod = $("#am1112").val() ; 
+         }
+        if ($('#pm1201').is(':checked')) {
+        	timePeriod = $("#pm1201").val() ; 
+            }
+        if ($('#pm0102').is(':checked')) {
+        	timePeriod = $("#pm0102").val() ; 
+           }
+        if ($('#pm0203').is(':checked')) {
+        	timePeriod = $("#pm0203").val() ; 
+          }
+        if ($('#pm0304').is(':checked')) {
+        	timePeriod = $("#pm0304").val() ; 
+         }
+        if ($('#pm0405').is(':checked')) {
+        	timePeriod = $("#pm0405").val() ; 
+            }
+        if ($('#pm0506').is(':checked')) {
+        	timePeriod = $("#pm0506").val(); 
+           }
+        if ($('#pm0607').is(':checked')) {
+        	timePeriod = $("#pm0607").val() ; 
+          }
+        if ($('#extra').is(':checked')) {
+        	timePeriod = $("#extra").val() ; 
+         }
+        var eventArr = {}; 
+        eventArr['time']=timePeriod; 
+        eventArr['date'] = date.format("DD/MM/YYYY");
+        eventArr['title'] = originalEventObject.title;
+        
+        //$("#total-events").val(JSON.stringify(eventArr));
+        eventList.push(eventArr);
+        
+       
+      //after 7     
+    /*  $('#total-events').val($('#total-events').val()+
+                             "{'time':'"+timePeriod+
+                             "','date':'"+date.format("DD/MM/YYYY")+
+                             "','title':'"+originalEventObject.title+"'},"); */
+     
+     // is the "remove after drop" checkbox checked?
+   
+    		 
+        if ($('#drop-remove').is(':checked')) {
+          // if so, remove the element from the "Draggable Events" list
+          $(this).remove();
+        }
+  
+      }
+    });
+
+    /* ADDING EVENTS */
+    var currColor = "#3c8dbc"; //Red by default
+    //Color chooser button
+    var colorChooser = $("#color-chooser-btn");
+    $("#color-chooser > li > a").click(function (e) {
+      e.preventDefault();
+      //Save color
+      currColor = $(this).css("color");
+      //Add color effect to button
+      $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+    });
+    $("#add-new-event").click(function (e) {
+      e.preventDefault();
+      //Get value and make sure it is not null
+      var val = $("#new-event").val();
+      if (val.length == 0) {
+        return;
+      }
+
+      //Create events
+      var event = $("<div />");
+      event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+      event.html(val);
+      $('#external-events').prepend(event);
+
+      //Add draggable funtionality
+      ini_events(event);
+
+      //Remove event from text input
+      $("#new-event").val("");
+    });
+    
+    $('#save-timesheet-event').click(function(e){
+   		//var calen=$('#total-events').val()
+   		
+   		$.ajax({
+					type: 'POST',
+					data: JSON.stringify(eventList),
+			        contentType: 'application/json',
+                    url: 'AddTimesheet',						
+                    success: function(data) {
+                        console.log('success');
+                        $("#save_msg").text(data);
+                        $("#save_msg").css("color","green");
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                    	$("#save_msg").text("Error saving timesheet. please try again later.");
+                        $("#save_msg").css("color","red");
+                     }
+                });
+    	console.log(JSON.stringify(eventList));
+    });
+  });
+  
+
+</script>
+</body>
+</html>
